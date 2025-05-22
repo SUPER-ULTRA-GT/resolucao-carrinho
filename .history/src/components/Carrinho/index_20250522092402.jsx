@@ -1,0 +1,52 @@
+import { useEffect, useState } from 'react';
+import './style.css';
+import produtos from '/src/data/produtos.json'
+import Item from './Item';
+const Carrinho = () => {
+
+    const [items, setItems] = useState([...produtos]);
+    const [precoTotal, setPrecoTotal] = useState(0);
+
+    useEffect(() => {
+        const geral = items.reduce((total, item) => total + item.quantidade * item.preco, 0);
+        setPrecoTotal(geral);
+    }, [items])
+
+
+    const remove = (id) => {
+        const lista = [...items];
+        const index = lista.findIndex(produto => produto.id === id);
+        const produtoSelecionado = lista[index];
+        produtoSelecionado.quantidade > 0 &&
+            produtoSelecionado.quantidade--;
+        setItems(lista)
+    }
+
+    const add = (id) => {
+        const lista = [...items];
+        const index = lista.findIndex(produto => produto.id === id);
+        const produtoSelecionado = lista[index];
+        produtoSelecionado.quantidade++;
+        setItems(lista)
+    }
+    return (
+        <>
+            <ul className='produtos'>
+                {produtos.map(item => (
+                    <Item key={item.id}
+                        id={item.id}
+                        {...item}
+                        nome={item.nome}
+                        
+                        remove={remove}
+                        quantidade={item.quantidade}
+                        add={add}
+                    />
+                ))}
+            </ul>
+            <h4>R${precoTotal.toFixed(2)}</h4>
+        </>
+    );
+}
+
+export default Carrinho;

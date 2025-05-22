@@ -1,0 +1,44 @@
+import './style.css';
+import { useState } from "react";
+
+const Carrinho = () => {
+    const [qtdCoca, setQtdCoca] = useState(0)
+    const [qtdTapioca, setQtdTapioca] = useState(0)
+
+    const addCoca = () => {
+        setQtdCoca(qtdCoca + 1)
+    }
+
+    const removeCoca = () => {
+        qtdCoca > 0 && setQtdCoca(qtdCoca - 1)
+    }
+
+    const addTapioca = () => {
+        setQtdTapioca(qtdTapioca + 1);
+    }
+
+    const removeTapioca = () => {
+        qtdTapioca > 0 && setQtdTapioca(qtdTapioca - 1)
+    }
+
+    const total = qtdCoca * 6 + qtdTapioca * 10;
+    return (
+        <div className="produtos">
+            <div>
+                COCA COLA | R$ 6.00
+                <button onClick={() => removeCoca()}> - </button>
+                {qtdCoca}
+                <button onClick={() => addCoca()}> + </button>
+            </div>
+            <div>
+                TAPIOCA | R$ 10.00
+                <button onClick={() => removeTapioca()}> - </button>
+                {qtdTapioca}
+                <button onClick={() => addTapioca()}> + </button>
+            </div>
+            <h2>R${total.toFixed}</h2>
+        </div>
+    );
+}
+
+export default Carrinho;

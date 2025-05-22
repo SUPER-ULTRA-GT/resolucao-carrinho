@@ -1,0 +1,27 @@
+import './style.css';
+import produtos from '/src/data/produtos.json'
+const Carrinho = () => {
+
+    const add = (id) => {
+
+    }
+    const remove = (id) => {
+        const lista = [...produtos];
+        lista
+    }
+    return (
+        <ul className='produtos'>
+
+            {produtos.map(item => (
+                <li key={item.id}>
+                    {item.nome} | R${item.preco.toFixed(2)}
+                    <button onClick={() => remove(item.id)}> - </button>
+                    {item.qtd}
+                    <button onClick={() => add(item.id)}> + </button>
+                </li>
+            ))}
+        </ul>
+    );
+}
+
+export default Carrinho;

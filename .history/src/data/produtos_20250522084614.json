@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nome": "Coca-cola",
+        "preco": 6
+        "qua"}
+    ,
+    {
+        "id": 2,
+        "nome": "Tapioca",
+        "preco": 10
+        "qua"}
+    ,
+    {
+        "id": 3,
+        "nome": "Cafe",
+        "preco": 2
+        "qua"
+    }
+]
