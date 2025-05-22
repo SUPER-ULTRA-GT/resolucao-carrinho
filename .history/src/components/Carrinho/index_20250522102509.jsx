@@ -53,7 +53,7 @@ const Carrinho = () => { // "Carrinho" é o nome do nosso componente
 
         // Verifica se a quantidade do produto é maior que 0 antes de diminuir
         produtoSelecionado.quantidade > 0 && produtoSelecionado.quantidade--; // Diminui a quantidade em 1
-        
+        }
         setItems(lista); // Atualiza a lista de itens no estado, o que vai fazer o "useEffect" rodar de novo
     }
 
@@ -87,7 +87,7 @@ const Carrinho = () => { // "Carrinho" é o nome do nosso componente
                     {item.nome} | {item.preco}
                     <button onClick{() => remove(item.id)}> - </button>
                     {item.quantidade}
-                    <button onClick{() => add(item.id)}> + </button>
+                    <button> +</button>
                     >
                     </li>
                 ))} */}
@@ -95,6 +95,6 @@ const Carrinho = () => { // "Carrinho" é o nome do nosso componente
             <h4>R${precoTotal.toFixed(2)}</h4> {/* Mostra o preço total formatado com duas casas decimais */}
         </>
     );
-}
+
 
 export default Carrinho; // Permite que outros arquivos usem este componente "Carrinho"

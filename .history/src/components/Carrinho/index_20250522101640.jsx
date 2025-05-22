@@ -9,28 +9,28 @@ const Carrinho = () => { // "Carrinho" é o nome do nosso componente
     // "items" guarda a lista de produtos no carrinho e "setItems" é a função para atualizar essa lista.
     // Começa com uma cópia da lista de produtos importada.
     const [items, setItems] = useState([...produtos]);
-    // const [items, setItems] = useState([
-    // {
-    //     "id": 1,
-    //     "nome": "Coca-cola",
-    //     "preco": 6,
-    //     "quantidade": 0
-    // }
-    // ,
-    // {
-    //     "id": 2,
-    //     "nome": "Tapioca",
-    //     "preco": 10,
-    //     "quantidade": 0
-    // }
-    // ,
-    // {
-    //     "id": 3,
-    //     "nome": "Cafe",
-    //     "preco": 2,
-    //     "quantidade": 0
-    // }
-    // ])
+    const [items, setItems] = useState([
+    {
+        "id": 1,
+        "nome": "Coca-cola",
+        "preco": 6,
+        "quantidade": 0
+    }
+    ,
+    {
+        "id": 2,
+        "nome": "Tapioca",
+        "preco": 10,
+        "quantidade": 0
+    }
+    ,
+    {
+        "id": 3,
+        "nome": "Cafe",
+        "preco": 2,
+        "quantidade": 0
+    }
+    ])
     // "precoTotal" guarda o valor total da compra e "setPrecoTotal" atualiza esse valor.
     // Começa em 0.
     const [precoTotal, setPrecoTotal] = useState(0);
@@ -52,8 +52,9 @@ const Carrinho = () => { // "Carrinho" é o nome do nosso componente
         const produtoSelecionado = lista[index]; // Pega o produto encontrado
 
         // Verifica se a quantidade do produto é maior que 0 antes de diminuir
-        produtoSelecionado.quantidade > 0 && produtoSelecionado.quantidade--; // Diminui a quantidade em 1
-        
+        if (produtoSelecionado.quantidade > 0) {
+            produtoSelecionado.quantidade--; // Diminui a quantidade em 1
+        }
         setItems(lista); // Atualiza a lista de itens no estado, o que vai fazer o "useEffect" rodar de novo
     }
 
@@ -82,15 +83,6 @@ const Carrinho = () => { // "Carrinho" é o nome do nosso componente
                         add={add} // Passa a função "add" para o componente Item
                     />
                 ))}
-                {/* {produtos.map(item =>(
-                    <li key={item.id}
-                    {item.nome} | {item.preco}
-                    <button onClick{() => remove(item.id)}> - </button>
-                    {item.quantidade}
-                    <button onClick{() => add(item.id)}> + </button>
-                    >
-                    </li>
-                ))} */}
             </ul>
             <h4>R${precoTotal.toFixed(2)}</h4> {/* Mostra o preço total formatado com duas casas decimais */}
         </>

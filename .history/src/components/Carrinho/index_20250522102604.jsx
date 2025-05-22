@@ -55,7 +55,7 @@ const Carrinho = () => { // "Carrinho" é o nome do nosso componente
         produtoSelecionado.quantidade > 0 && produtoSelecionado.quantidade--; // Diminui a quantidade em 1
         
         setItems(lista); // Atualiza a lista de itens no estado, o que vai fazer o "useEffect" rodar de novo
-    }
+    
 
     // Função para ADICIONAR um item (ou aumentar a quantidade)
     const add = (id) => {
